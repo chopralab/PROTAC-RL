@@ -2,7 +2,7 @@
 
 
 dataset_name=PROTAC
-random=random
+random=canonical
 
 python preprocess.py -train_src data/${dataset_name}/${random}/src-train \
                      -train_tgt data/${dataset_name}/${random}/tgt-train \

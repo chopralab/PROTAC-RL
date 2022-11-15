@@ -4,9 +4,9 @@
 dataset_name=PROTAC
 random=random
 
-agent_step=1000
-ZINC_step=200000
-PROTAC_step=3000
+agent_step=2000
+ZINC_step=300000
+PROTAC_step=6000
 
 beamsize=32
 test_nbest=250
@@ -14,9 +14,9 @@ test_nbest=250
 train_type=M
 # beam search or multinomial sampling
 score_function=PK
-case=dBET6
+case=ahad1
 
-model=Model_Agent_on_${dataset_name}_zinc${ZINC_step}_protac${PROTAC_step}_${random}_${NL}_${train_type}_${score_function}
+model=Model_Agent_on_${dataset_name}_zinc${ZINC_step}_protac${PROTAC_step}_${random}_${NL}${train_type}_${score_function}
 
 chooseGpu=1
 

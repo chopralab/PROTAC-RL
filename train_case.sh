@@ -13,13 +13,13 @@ goal=20
 
 agent_step=2000
 # training steps of agents
-ZINC_step=200000
-PROTAC_step=3000
+ZINC_step=300000
+PROTAC_step=6000
 # choose prior
 
 beamsize=50
 # useless
-train_nbest=50
+train_nbest=8
 # generate train_nbest SMILES in a batch for reinforcement learning
 train_type=M
 # M/B generation method: multinomial sampling/beam search
@@ -28,11 +28,11 @@ sigma=60
 # coefficient for reinforcement learning, sometimes should be larger
 
 exp_id=0
-chooseGpu=0
+chooseGpu=1
 lr=0.00001
 
 model=Agent_on_${dataset_name}_zinc${ZINC_step}_protac${PROTAC_step}_${random}_${train_type}_${score_function}
-case=dBET6
+case=ahad1
 # corresponding to case folder name
 
 pathsave=case/${case}

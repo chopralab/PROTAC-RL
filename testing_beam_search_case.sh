@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # this file used for generating SMILES with model having been trained with reinforcement learning using beam search
 dataset_name=PROTAC
-random=canonical
+random=random
 
-agent_step=1000
-ZINC_step=200000
-PROTAC_step=3000
+agent_step=2000
+ZINC_step=300000
+PROTAC_step=6000
 
 beamsize=50
 test_nbest=500

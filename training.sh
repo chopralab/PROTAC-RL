@@ -1,6 +1,6 @@
 dataset_name=ZINC
 prior_step=300000
-random=random
+random=canonical
 exp_id=1
 
 pathsave=checkpoints/${dataset_name}/${random}
@@ -9,7 +9,7 @@ if [ ! -d "$pathsave"]; then
 fi
 mkdir $pathsave
 
-CUDA_VISIBLE_DEVICES=3 python  train.py -data data/${dataset_name}/${random}/ \
+CUDA_VISIBLE_DEVICES=1 python  train.py -data data/${dataset_name}/${random}/ \
                  -save_model checkpoints/${dataset_name}/${random}/SyntaLinker_prior -world_size 1 \
                  -valid_steps 10000 -seed 42 -gpu_ranks 0 -save_checkpoint_steps 50000 -keep_checkpoint 50 \
                  -train_steps ${prior_step}  -param_init 0  -param_init_glorot -max_generator_batches 96 \

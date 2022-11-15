@@ -4,14 +4,15 @@ ZINC_step=300000
 protac_step=7000
 # fine-tuning step
 random=random
+random2=canonical
 model=SyntaLinker_prior_step
 pathsave=checkpoints/${dataset_name}/${random}/
 if [ ! -d "$pathsave"]; then
   mkdir $pathsave
 fi
 mkdir $pathsave
-CUDA_VISIBLE_DEVICES=3 python  train.py -data data/${dataset_name}/${random}/ \
-                 -train_from checkpoints/ZINC500/${random}/${model}_${ZINC_step}.pt \
+CUDA_VISIBLE_DEVICES=1 python  train.py -data data/${dataset_name}/${random}/ \
+                 -train_from checkpoints/ZINC/${random2}/${model}_${ZINC_step}.pt \
                  -save_model checkpoints/${dataset_name}/${random}/SyntaLinker_zinc${ZINC_step}_protac -world_size 1 \
 		             -valid_steps 1000 -seed 42 -gpu_ranks 0 -save_checkpoint_steps 1000 -keep_checkpoint 50 \
                  -train_steps ${protac_step}  -param_init 0  -param_init_glorot -max_generator_batches 96 \

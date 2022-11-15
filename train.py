@@ -14,7 +14,6 @@ import onmt.utils.distributed
 from onmt.utils.logging import logger
 from onmt.train_single import main as single_main
 
-
 def main(opt):
     if opt.rnn_type == "SRU" and not opt.gpu_ranks:
         raise AssertionError("Using SRU requires -gpu_ranks set.")
