@@ -5,7 +5,7 @@ from __future__ import division, unicode_literals
 import argparse
 
 from onmt.utils.logging import init_logger
-from onmt.reinforce.trainer_ms import build_rl_ms_trainer
+from onmt.reinforce.trainer_ms import build_RL_ms_trainer
 
 import onmt.inputters
 import onmt.translate
@@ -17,7 +17,7 @@ import torch
 
 
 def main(opt, logger):
-    RLmodel = build_rl_ms_trainer(opt, logger=logger)
+    RLmodel = build_RL_ms_trainer(opt, logger=logger)
 
     RLmodel.train(src_path=opt.src,
                   tgt_path=opt.tgt,

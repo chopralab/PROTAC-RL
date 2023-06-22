@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 dataset_name=PROTAC
 ZINC_step=300000
 # step of pre-training model for initial fine-tuning model
@@ -7,11 +9,12 @@ random=random
 random2=canonical
 model=SyntaLinker_prior_step
 pathsave=checkpoints/${dataset_name}/${random}/
-if [ ! -d "$pathsave"]; then
+if [ ! -d "$pathsave" ]; then
   mkdir $pathsave
 fi
 mkdir $pathsave
-CUDA_VISIBLE_DEVICES=1 python  train.py -data data/${dataset_name}/${random}/ \
+
+CUDA_VISIBLE_DEVICES=0 python  train.py -data data/${dataset_name}/${random}/ \
                  -train_from checkpoints/ZINC/${random2}/${model}_${ZINC_step}.pt \
                  -save_model checkpoints/${dataset_name}/${random}/SyntaLinker_zinc${ZINC_step}_protac -world_size 1 \
 		             -valid_steps 1000 -seed 42 -gpu_ranks 0 -save_checkpoint_steps 1000 -keep_checkpoint 50 \

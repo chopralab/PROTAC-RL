@@ -5,7 +5,7 @@ from __future__ import division, unicode_literals
 import argparse
 
 from onmt.utils.logging import init_logger
-from onmt.reinforce.trainer import build_rl_trainer
+from onmt.reinforce.trainer import build_RL_trainer
 
 import onmt.inputters
 import onmt.translate
@@ -14,11 +14,15 @@ import onmt.model_builder
 import onmt.modules
 import onmt.opts
 import torch
+import os
 
 
 def main(opt, logger):
-    RLmodel = build_rl_trainer(opt, logger=logger, report_score=True)
-
+    RLmodel = build_RL_trainer(opt, logger=logger, report_score=True)
+    # print ("scr exists")
+    # print (os.path.exists(opt.scr))
+    # print ("tgt exists")
+    # print (os.path.exists(opt.tgt))
     RLmodel.train(src_path=opt.src,
                          tgt_path=opt.tgt,
                          src_dir=opt.src_dir,

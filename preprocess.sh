@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+module load anaconda
+conda activate protacs
 
 dataset_name=PROTAC
 random=canonical

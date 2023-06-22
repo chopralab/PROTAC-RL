@@ -29,10 +29,9 @@ from onmt.inputters import EOS_WORD, PAD_WORD
 from onmt.reinforce.scoring_functions import get_scoring_function
 from onmt.reinforce.experience import Experience
 from onmt.utils.misc import tile
-from onmt.utils.loss import build_loss_compute
+# from onmt.utils.loss import build_loss_compute
 import gc
-
-def build_RL_ms_trainer(opt, logger=None, out_file=None, log_probs_out_file=None):
+def build_rl_ms_trainer(opt, logger=None, out_file=None, log_probs_out_file=None):
     """
     Simplify `Trainer` creation based on user `opt`s*
 

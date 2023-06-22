@@ -22,7 +22,7 @@ from onmt.models import build_model_saver
 import random
 
 
-def build_rl_trainer(opt, report_score=True, logger=None, out_file=None, log_probs_out_file=None):
+def build_RL_trainer(opt, report_score=True, logger=None, out_file=None, log_probs_out_file=None):
     if out_file is None:
         out_file = codecs.open(opt.output, 'w+', 'utf-8')
 

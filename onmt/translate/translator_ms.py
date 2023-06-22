@@ -339,7 +339,7 @@ class Translator_ms(object):
                 if c == self.vocab.stoi[PAD_WORD]: break
                 chars.append(self.vocab.itos[c])
                 # chars.append(' ')
-            smile = " ".join(chars)
+            smile = "".join(chars)
             print (smile)
             smiles.append(smile)
         self.out_file.write('\n'.join(smiles) + '\n')

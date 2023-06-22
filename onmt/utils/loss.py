@@ -11,29 +11,6 @@ import torch.nn.functional as F
 
 import onmt
 import onmt.inputters as inputters
-from onmt.modules.sparse_losses import SparsemaxLoss
-
-
-def build_loss_compute(model, tgt_vocab, opt, train=True):
-    """
-    This returns user-defined LossCompute object, which is used to
-    compute loss in train/validate process. You can implement your
-    own *LossCompute class, by subclassing LossComputeBase.
-    """
-    device = torch.device("cuda" if onmt.utils.misc.use_gpu(opt) else "cpu")
-
-    if opt.copy_attn:
-        compute = onmt.modules.CopyGeneratorLossCompute(
-            model.generator, tgt_vocab, opt.copy_attn_force,
-            opt.copy_loss_by_seqlength)
-    else:
-        compute = NMTLossCompute(
-            model.generator, tgt_vocab,
-            label_smoothing=opt.label_smoothing if train else 0.0)
-    compute.to(device)
-
-    return compute
-
 
 class LossComputeBase(nn.Module):
     """
@@ -172,6 +149,29 @@ class LossComputeBase(nn.Module):
 
     def _unbottle(self, _v, batch_size):
         return _v.view(-1, batch_size, _v.size(1))
+    
+from onmt.modules.sparse_losses import SparsemaxLoss
+
+
+def build_loss_compute(model, tgt_vocab, opt, train=True):
+    """
+    This returns user-defined LossCompute object, which is used to
+    compute loss in train/validate process. You can implement your
+    own *LossCompute class, by subclassing LossComputeBase.
+    """
+    device = torch.device("cuda" if onmt.utils.misc.use_gpu(opt) else "cpu")
+
+    if opt.copy_attn:
+        compute = onmt.modules.CopyGeneratorLossCompute(
+            model.generator, tgt_vocab, opt.copy_attn_force,
+            opt.copy_loss_by_seqlength)
+    else:
+        compute = NMTLossCompute(
+            model.generator, tgt_vocab,
+            label_smoothing=opt.label_smoothing if train else 0.0)
+    compute.to(device)
+
+    return compute
 
 
 class LabelSmoothingLoss(nn.Module):

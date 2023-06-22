@@ -19,7 +19,7 @@ import threading
 import pexpect
 import importlib
 import multiprocessing
-from onmt.reinforce.score_util import calc_SC_RDKit_score
+# from onmt.reinforce.score_util import calc_SC_RDKit_score
 
 from rdkit import rdBase, RDLogger
 RDLogger.DisableLog('rdApp.*')  # https://github.com/rdkit/rdkit/issues/2683
